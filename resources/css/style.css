@@ -1,7 +1,9 @@
 #faketalk_content * {
     box-sizing: border-box;
 }
-
+#faketalk_content {
+    margin-right: 0px;
+}
 
 /* Form Notice */
 .notice.facetalk_notice {
@@ -23,10 +25,10 @@ body.faketalk #wpcontent {
 
 /* Breadcrumbs */
 .faketalk_breadcrumbs {
-    padding: 22px 120px 22px 32px;
+    padding: 22px 0px 22px 32px;
     height: 60px;
     margin: 0 auto;
-    width: calc(100% - 160px);
+    width: 100%;
     background: #fff;
     position: fixed;
     top: 32px;
@@ -226,4 +228,32 @@ li.postbox {
 li.postbox.current {
     border-left: 4px solid #2271b1;
     padding-left: 0px;
+}
+@media screen and (max-width: 1200px) {
+    .faketalk_page_wp-fake-comments-generator-dashboard #faketalk_tabbed {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .faketalk_dash_box {
+        min-width: 350px;
+    }
+}
+
+@media screen and (max-width: 782px) {
+    .faketalk_breadcrumbs {
+        padding: 36px 0 22px 32px;
+        height: 76px;
+    }
+}
+@media screen and (max-width: 600px)  {
+    .faketalk_breadcrumbs {
+        padding: 5px 0 5px 32px;
+        height: auto;
+        position: static;
+        display: block;
+        margin-top: -10px;
+    }
+    #faketalk_inner_container {
+        padding: 10px 30px 10px;
+    }
 }
