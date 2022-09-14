@@ -1,0 +1,92 @@
+/* Form Notice */
+.notice.facetalk_notice {
+    padding: 10px;
+    border-left-color: #ad00cc;
+}
+
+/* Fix WP Styles */
+#faketalk_content h2 {
+    font-size: 23px;
+    font-weight: 400;
+    margin: 0;
+    padding: 9px 0 4px 0;
+    line-height: 1.3;
+}
+
+/* Main Form Styles */
+#faketalk:after {
+    content: " ";
+    display: block;
+    clear: both;
+}
+#faketalk label {
+    font-size: 12px;
+    display: block;
+    padding: 0px 0px 4px 1px;
+}
+#faketalk input[type='text'] {
+    border: 1px solid #c3c4c7;
+    margin-bottom: 10px;
+}
+#faketalk .faketalk_title {
+    font-size: 1.4em;
+    margin: 0.2em 0 0.5em;
+    display: block;
+    line-height: 1.4;
+    font-weight: 400;
+}
+#faketalk .description {
+    margin-bottom: 10px;
+}
+
+/* Tabbed Content > Windows */
+#faketalk_tabbed .faketalk_plugin_body {
+    min-height: 450px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+#faketalk_tabbed .faketalk_tabbed_window {
+    display: none;
+}
+#faketalk_tabbed .faketalk_tabbed_window.show {
+    display: block;
+}
+
+/* Tabbed Content > Sidebar List */
+#faketalk_tabbed .faketalk_tabbed_list {
+    margin: 0px;
+}
+#faketalk_tabbed .faketalk_tabbed_list li {
+    opacity: 0.4;
+    cursor: pointer;
+}
+#faketalk_tabbed .faketalk_tabbed_list li:hover {
+    opacity: 0.7;
+}
+#faketalk_tabbed .faketalk_tabbed_list li.current {
+    opacity: 1;
+}
+#faketalk_tabbed .faketalk_tabbed_list .faketalk-sidebar-prom img {
+    width: 100%;
+}
+
+/* Tabbed Content > Target Selection */
+#faketalk #faketalk_target .faketalk_all_option {
+    padding-bottom: 15px;
+    border-bottom: 1px solid #c3c4c7;
+}
+#faketalk #faketalk_target #faketalk_posts {
+    width: 100%;
+    max-width: 100%;
+    overflow: auto;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+#faketalk #faketalk_target #faketalk_posts option {
+    padding: 3px;
+}
+
+/* Tabbed Content > Add Comments */
+#faketalk #faketalk_comments #comments_text {
+    margin-top: 10px;
+}
