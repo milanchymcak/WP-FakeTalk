@@ -2,7 +2,6 @@
 // Do not access the file directly!
 defined('FAKETALK_LOGGED') or die('Boo! Do not access the file directly!');
 
-
 /**
  * Statistics Box
  */
@@ -31,7 +30,7 @@ if(file_exists(FAKETALK_PATH . '/inc/components/latest.php')) {
 if(file_exists(FAKETALK_PATH . '/inc/components/buttons.php')) {
 
     echo '<div class="faketalk_dash_box">';
-    echo '<h4>Important Buttons</h4>';
+    echo '<h4>Important Actions</h4>';
     echo include(FAKETALK_PATH . '/inc/components/buttons.php');
     echo '</div>';
 }
