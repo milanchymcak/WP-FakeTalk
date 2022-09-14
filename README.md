@@ -9,7 +9,7 @@ Do you feel like the discussion at your posts is going nowhere? You can create, 
 5. Publish!
 
 ## Download
-[Download FakeTalk Plugin](https://github.com/milanchymcak/faketalk/archive/refs/heads/main.zip "Download FakeTalk")
+[Download FakeTalk Plugin](https://github.com/milanchymcak/faketalk/releases/tag/Plugin "Download FakeTalk")
 
 ## Installation
 1. Go to the plugins page (add new) or visit /wp-admin/plugin-install.php
