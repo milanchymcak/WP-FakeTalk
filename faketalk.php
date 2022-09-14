@@ -18,7 +18,7 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 // Protect all files from direct accessing them by outsiders
-if(!isset($_SERVER['HTTP_REFERER'])) die('Boo! Do not access the file directly!'); 
+if (!defined('ABSPATH')) die('Boo! Do not access the file directly!'); 
 
 /**
  * Plugin Constants
@@ -42,7 +42,7 @@ spl_autoload_register(function($className) {
 		$className = str_replace('FakeTalk', '', $className);
 		$className = str_replace('\\', '', $className);
 
-		include(FAKETALK_PATH . 'modules/' . $className . '.php');
+		include(FAKETALK_PATH . 'classes/' . $className . '.php');
 	}
 });
 
@@ -76,26 +76,8 @@ function faketalk_delete_settings(): void {
 /**
  * Main Structure Of The Plugin
  * Configs, Menu Hierarchy
- * @return void
  */
-$FakeTalk_structure = array(
-	'config' => array(
-		'pluginSlug' => 'wp-fake-comments-generator',
-		'pluginTitle' => 'WP Fake Comments Generator'
-	),
-	'menu_page' => array(
-		'title' => 'FakeTalk', // Menu Title
-		'icon' => 'dashicons-tickets', // Dashicon for the menu - @link https://developer.wordpress.org/resource/dashicons/#tickets
-		'position' => 25 // Position in the sidebar menu of WP Admin
-	),
-	'submenu_page' => array(
-		'Add New',
-		'Settings',
-		'Statistics',
-		'API',
-		'About'
-	)
-);
+$FakeTalk_structure = include (FAKETALK_PATH . 'config.php');
 
 /**
  * Init the Plugin

@@ -1,8 +1,8 @@
-<?php 
+<?php
 // Do not access the file directly!
-defined('FAKETALK_LOGGED') or die('Boo! Do not access the file directly!'); 
+defined('FAKETALK_LOGGED') or die('Boo! Do not access the file directly!');
 ?>
-<p>Created by Milan Chymcak on 12.05.2022.</p>
+<p>Created by Milan Chymcak on 12.09.2022.</p>
 <p>So we must add:</p>
 <p>
     Donate Box,<br />

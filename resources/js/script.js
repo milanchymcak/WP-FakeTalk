@@ -1,5 +1,11 @@
 window.addEventListener('load', function() {
 
+    // Add Body Class
+    const faketalk_body = document.querySelector("body");
+    if(faketalk_body !== undefined && faketalk_body !== null) {
+        if(window.location.href.includes("wp-fake-comments-generator")) faketalk_body.classList.add("faketalk");
+    }
+
     // Get Tabbed Menu List
     const faketalk_list = document.querySelectorAll(".faketalk_tabbed_list li");
     if(faketalk_list !== undefined && faketalk_list !==  null) {

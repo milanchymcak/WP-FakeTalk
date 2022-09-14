@@ -161,8 +161,8 @@ class menuContent {
 								// Menu Slug
 								$structure['config']['pluginSlug'] . '-' . $menuPageSlug,
 								// Content of the settings page
-								function () use ($menuPageTitle, $menuPageSlug) {
-									$this->pluginContent($menuPageTitle, $menuPageSlug);
+								function () use ($subMenuTitle, $menuPageSlug) {
+									$this->pluginContent($subMenuTitle, $menuPageSlug);
 								}
 							);
 						}
@@ -178,11 +178,17 @@ class menuContent {
 	 *
 	 * @param string $menuPageTitle
 	 * @param string $menuPageSlug
-	 * @return void
+	 * @return string
 	 */
 	private function pluginContent(string $menuPageTitle='', string $menuPageSlug=''): void {
 
 		echo '<div class="wrap" id="faketalk_content">';
+
+		if(file_exists(FAKETALK_PATH . '/inc/components/breadcrumbs.php')) {
+			echo include(FAKETALK_PATH . '/inc/components/breadcrumbs.php');
+		}
+
+		echo '<div id="faketalk_inner_container">';
 
 		// Submitting Data from Form
 		if(isset($_POST['faketalk_hidden_submit']) && !empty($_POST['faketalk_hidden_submit'])) {
@@ -221,6 +227,8 @@ class menuContent {
 		echo '</div>'; // >> #post-body
 
 		echo '</div>'; // >> #Poststuff
+
+		echo '</div>'; // >> #faketalk_inner_container
 
 		echo '</div>'; // >> .wrap
 

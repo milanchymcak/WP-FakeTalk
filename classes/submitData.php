@@ -4,17 +4,30 @@ namespace FakeTalk;
 // Do not access the file directly!
 defined('FAKETALK_LOGGED') or die('Boo! Do not access the file directly!'); 
 
-// When user decided to submit data
+/**
+ * submitData
+ */
 class submitData {
-
+    
+    /**
+     * __construct
+     *
+     * @param  array $postData
+     * @return void
+     */
     function __construct(array $postData=array()) {
 
         // save postData
         $this->postData = $postData;
     }
 
-    // Prepare Submit
-    public function prepareSubmit() {
+    /**
+     * prepareSubmit
+     * Return message with confirmation of the submission
+     *
+     * @return string
+     */
+    public function prepareSubmit(): string {
 
         // Print Message
         $message = '<div class="notice notice-warning inline facetalk_notice">';
@@ -38,9 +51,14 @@ class submitData {
         return $message;
 
     }
-
-    // Delete All Comments
-    private function deleteAllComments() {
+  
+    /**
+     * Delete All Comments Previously Posted by The Plugin
+     * Find the comments using meta_key = '_faketalk
+     *
+     * @return string
+     */
+    private function deleteAllComments(): ?string {
         
         // Query comments by FakeTalk
         $comments = get_comments(
@@ -57,9 +75,13 @@ class submitData {
         // Notify the user about deletion
         return $this->formMessage(8); 
     }
-
-    // Change Settings
-    private function changeSettings() {
+ 
+    /**
+     * Update User Settings
+     *
+     * @return string
+     */
+    private function changeSettings(): string {
 
         // Changing TLD
         if(isset($this->postData['faketalk_tld']) && !empty($this->postData['faketalk_tld'])) {
@@ -85,8 +107,12 @@ class submitData {
         return $this->formMessage(7); 
     }
 
-    // Delete Batch
-    private function deleteBatch() {
+    /**
+     * Delete (Specific) Batch
+     *
+     * @return string
+     */
+    private function deleteBatch(): string {
 
         // Cannot be empty
         if(!isset($this->postData['faketalk_batch_delete']) || empty($this->postData['faketalk_batch_delete'])) return $this->formMessage(6); 
@@ -99,19 +125,26 @@ class submitData {
         );
 
         // Delete them
+        $delete_comments = 0;
         foreach($comments as $i => $commentData) {
-            wp_delete_comment($comments[$i]->comment_ID);
+            if(wp_delete_comment($comments[$i]->comment_ID)) {
+                $delete_comments++;
+            }
         }
         
         // Success
-        return $this->formMessage(5); 
+        if($delete_comments > 0) return $this->formMessage(5); 
 
         // Not deleted
         return $this->formMessage(6); 
     }
-
-    // Submit
-    private function finalSubmit() {
+ 
+    /**
+     * finalSubmit
+     *
+     * @return string
+     */
+    private function finalSubmit(): string {
 
         // Get Target Posts
         $post_IDs = $this->getTargetPosts();
@@ -201,9 +234,21 @@ class submitData {
         return $this->formMessage(0);
 
     }
-
-    // Add comment meta
-    private function addCommentMeta(int $comment_ID=0, string $identifier='') {
+  
+    /**
+     * Add Comment Meta To Created Comments
+     * Add:
+     * _faketalk - generic key for the created comments
+     * faketalk_custom_meta_key - user created custom meta key
+     * faketalk_custom_meta_value - user created custom meta value
+     * faketalk_custom_rating_value_min - user created custom meta value
+     * faketalk_custom_rating_value_max - user created custom meta value
+     * 
+     * @param  int $comment_ID
+     * @param  string $identifier
+     * @return void
+     */
+    private function addCommentMeta(int $comment_ID=0, string $identifier=''): void {
 
         // Add default plugin comment meta
         add_comment_meta(
@@ -252,9 +297,16 @@ class submitData {
         }
 
     }
-
-    // Get All Target Posts
-    private function getTargetPosts() {
+ 
+    /**
+     * Get All Targeted Posts 
+     * Return all post_IDs to comment on
+     * Can be specific by the user 
+     * Or user can post on all post Ids
+     *
+     * @return array
+     */
+    private function getTargetPosts(): ?array {
         
         // Store IDs
         $post_IDs = array();
@@ -289,8 +341,12 @@ class submitData {
         return $post_IDs;
     }
 
-    // Get Submitted Comments
-    private function getComments() {
+    /**
+     * Get All Comments Posted By The User
+     *
+     * @return array
+     */
+    private function getComments(): ?array {
 
         // Comment Text
         if(isset($this->postData['faketalk_comments_text']) && !empty($this->postData['faketalk_comments_text'])) {
@@ -303,9 +359,16 @@ class submitData {
 
         return false;
     }
-
-    // Spintax
-    private function textSpintax(string $text='') {
+  
+    /**
+     * textSpintax
+     * Spin the text with the spintax 
+     * Example: {Never|Never ever|Do not|Don't} 
+     * 
+     * @param  mixed $text
+     * @return string
+     */
+    private function textSpintax(string $text=''): ?string {
         return preg_replace_callback(
             '/\{(((?>[^\{\}]+)|(?R))*)\}/x',
             function ($text) {
@@ -316,9 +379,15 @@ class submitData {
             $text
         );
     }
-
-    // Get Date Range
-    private function getDateRange() {
+  
+    /**
+     * Get Random Time Specific By The User 
+     * Return timestamp format
+     * Fallback return false
+     *
+     * @return int
+     */
+    private function getDateRange(): ?int {
 
         // Date Ranges in timestamp
         if(
@@ -333,9 +402,14 @@ class submitData {
         return false;
     }
 
-
-    // Generate Random Fake but Valid Email
-    private function generateEmail() {
+    /**
+     * Generate Random Fake Email
+     * Each comment in the WP database must have an email associated to the comment
+     * Also add "honesty" to the comments
+     *
+     * @return string
+     */
+    private function generateEmail(): string {
 
         // Generate Random Length Of Email
         $email_length = mt_rand(4,7);
@@ -367,8 +441,12 @@ class submitData {
 
     }
 
-    // Generate Random Name
-    private function generateName() {
+    /**
+     * Generate Random Name    
+     *
+     * @return string
+     */
+    private function generateName(): string {
 
         // If the file with names got lost
         if(!file_exists(FAKETALK_PATH . 'resources/txt/names.txt')) return 'Unknown';
@@ -383,8 +461,13 @@ class submitData {
         return $nameList[array_rand($nameList)];;
     }
 
-    // Form Messages
-    private function formMessage(int $status_code=5) {
+    /**
+     * Form Messages   
+     *
+     * @param  int $status_code
+     * @return string
+     */
+    private function formMessage(int $status_code=5): string {
 
         // 1 - Problem with targeted blog posts
         if($status_code === 1) return 'We couldn\'t find any blog posts to comment on. Please try again!';

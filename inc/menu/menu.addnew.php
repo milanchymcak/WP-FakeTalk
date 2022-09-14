@@ -1,6 +1,6 @@
-<?php 
+<?php
 // Do not access the file directly!
-defined('FAKETALK_LOGGED') or die('Boo! Do not access the file directly!'); 
+defined('FAKETALK_LOGGED') or die('Boo! Do not access the file directly!');
 ?>
 <div id="postbox-container-2" class="postbox-container postbox faketalk_plugin_body">
 
@@ -14,27 +14,23 @@ defined('FAKETALK_LOGGED') or die('Boo! Do not access the file directly!');
 
         <span class="faketalk_title">2. Option - Select posts</span>
         <select name="faketalk_post_ids[]" id="faketalk_posts" multiple>
-            <?php 
-                $faketalk_i = 1;
-                $faketalk_query = new WP_Query(
-                    array(
-                        'posts_per_page'   =>  get_option('_faketalk_option_max_amount', '100'), // Max Amount 
-                        'post_type'        => 'post',
-                        'post_status'      => 'publish',
-                        'orderby'          => 'date',
-                        'order'            => 'DESC'
-                    ) 
-                );
-                while ($faketalk_query->have_posts()) : $faketalk_query->the_post();
-                    echo '<option value="'.get_the_ID().'">'.$faketalk_i.'. '.get_the_title().'</option>';
-                    $faketalk_i++;
-                endwhile;
-            ?>
+            <?php
+$faketalk_i = 1;
+$faketalk_query = new WP_Query(array(
+    'posts_per_page' => get_option('_faketalk_option_max_amount', '100') , // Max Amount
+    'post_type' => 'post',
+    'post_status' => 'publish',
+    'orderby' => 'date',
+    'order' => 'DESC'
+));
+while ($faketalk_query->have_posts()):
+    $faketalk_query->the_post();
+    echo '<option value="' . get_the_ID() . '">' . $faketalk_i . '. ' . get_the_title() . '</option>';
+    $faketalk_i++;
+endwhile;
+?>
         </select>
-
-
     </div>
-
     <div class="faketalk_tabbed_window" id="faketalk_comments">
         <tr>
             <th scope="row">
@@ -62,13 +58,13 @@ defined('FAKETALK_LOGGED') or die('Boo! Do not access the file directly!');
             Select date range that will try to create more authentic comments with older dates. In order to publish all
             comments as a today, please pick the same date in both inputs.
         </p>
-        <?php 
-  echo '<input name="faketalk_date_from" type="text" id="date_from" class="datepicker" size="20" value="'.date("d-m-Y", strtotime("-1 year", time())).'">'; 
-  ?>
+        <?php
+echo '<input name="faketalk_date_from" type="text" id="date_from" class="datepicker" size="20" value="' . date("d-m-Y", strtotime("-1 year", time())) . '">';
+?>
         To
-        <?php 
-  echo '<input name="faketalk_date_to" type="text" id="date_to" class="datepicker" size="20" value="'.date("d-m-Y").'">'; 
-  ?>
+        <?php
+echo '<input name="faketalk_date_to" type="text" id="date_to" class="datepicker" size="20" value="' . date("d-m-Y") . '">';
+?>
         </tr>
 
 
@@ -99,7 +95,7 @@ defined('FAKETALK_LOGGED') or die('Boo! Do not access the file directly!');
     </div>
 
     <div class="faketalk_tabbed_window" id="faketalk_schedule">
-        <p class="description">You will be able to schedule posts only in premium version in upcoming patch.</p>
+        <p class="description">Currently this featured will be released in the premium version of this awesome plugin. Author may change the opinion and release it anyway. Stay tuned!</p>
     </div>
 
     <div class="faketalk_tabbed_window" id="faketalk_submit">
@@ -132,7 +128,7 @@ defined('FAKETALK_LOGGED') or die('Boo! Do not access the file directly!');
             <h3>#6 Submit</h3>
         </li>
         <li class="postbox faketalk-sidebar-prom">
-            <img src="<?php echo plugins_url('resources/images/ad.jpg', __FILE__ ); ?>" alt="" >
+            <img src="<?php echo FAKETALK_URL . 'resources/images/ad.jpg'; ?>" alt="" >
         </li>
     </ul>
 </div>
