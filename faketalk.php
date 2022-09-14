@@ -56,6 +56,7 @@ register_uninstall_hook(__FILE__, 'faketalk_delete_settings');
 
 /**
  * faketalk_delete_settings
+ * Also used in the submitData.php when user decide to delete all settings
  *
  * @return void
  */

@@ -78,7 +78,28 @@ body.faketalk #wpcontent {
     background: #2271b1;
     color: #fff;
 }
-.faketalk_dash_box .no-faketalk_comments {
+.faketalk_roadmap li {
+    list-style-type: square;
+    margin-left: 25px;
+    padding-left: 5px;
+}
+
+.faketalk_dash_box label {
+    text-align: center;
+}
+.faketalk_dash_box select {
+    display: block;
+    text-align: center;
+    margin: 5px auto;
+    padding: 1px 25px 2px;
+}
+.faketalk_dash_box input#submit {
+    display: block;
+    margin: 15px auto 25px;
+}
+
+.faketalk_dash_box .no-faketalk_comments,
+.faketalk_dash_box .description_buttons {
     display: block;
     text-align: center;
     padding: 35px 0px;

@@ -43,7 +43,7 @@ class menuContent {
 				// CSS
 				wp_register_style(
 					$structure['config']['pluginSlug'].'-style', 
-					FAKETALK_URL . 'resources/css/style.css'
+					FAKETALK_URL . 'resources/css/style.min.css'
 				);
 				wp_enqueue_style($structure['config']['pluginSlug'].'-style');
 				// JS
