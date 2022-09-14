@@ -175,6 +175,9 @@ class menuContent {
 
 	/**
 	 * Template Content
+	 * !! We kinda need to use print inside the method below as that's how the anonymous
+	 * function insisde add_submenu_page wordpress hook works
+	 * It's much better than create fnc for each submenu page and then calling them one by one
 	 *
 	 * @param string $menuPageTitle
 	 * @param string $menuPageSlug

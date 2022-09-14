@@ -2,7 +2,35 @@
 // Do not access the file directly!
 defined('FAKETALK_LOGGED') or die('Boo! Do not access the file directly!');
 ?>
-<div id="postbox-container-2" class="postbox-container postbox faketalk_plugin_body">
+<div id="fake_talk_add_new_list">
+    <ul class="faketalk_tabbed_list">
+        <li class="postbox current" data-tab-target="faketalk_target">
+            <h3>#1 Target</h3>
+        </li>
+        <li class="postbox" data-tab-target="faketalk_comments">
+            <h3>#2 Comments</h3>
+        </li>
+        <li class="postbox" data-tab-target="faketalk_date">
+            <h3>#3 Date Range</h3>
+        </li>
+        <li class="postbox" data-tab-target="faketalk_settings">
+            <h3>#4 Settings</h3>
+        </li>
+        <li class="postbox" data-tab-target="faketalk_schedule">
+            <h3>#5 Schedule</h3>
+        </li>
+        <li class="faketalk_add_new_submit" data-tab-target="faketalk_submit">
+            <p class="submit">
+                <input type="hidden" name="faketalk_hidden_submit" value="addnew">
+                <input type="submit" name="faketalk_final_submit" id="faketalk_final_submit" class="button button-primary" value="Publish Comments">
+            </p>
+        </li>
+        <li class="postbox faketalk-sidebar-prom">
+            <a href="https://www.spinrewriter.com/?ref=e337" target="_blank" rel="noopener noreferrer"><img src="<?php echo FAKETALK_URL . 'resources/images/rewrite.webp'; ?>" alt="Article Rewriting" /></a>
+        </li>
+    </ul>
+</div>
+<div id="fake_talk_add_new_area" class="postbox-container postbox faketalk_plugin_body">
 
     <div class="faketalk_tabbed_window show" id="faketalk_target">
 
@@ -36,12 +64,12 @@ endwhile;
             <th scope="row">
                 <span class="faketalk_title">Add Comments</span>
                 <p class="description">
-                    Nested Spintax available. For more information visit <a
-                        href="https://medium.com/@instarazzo/what-is-spintax-format-and-what-are-its-applications-on-instarazzo-6e1b812cc208"
-                        target="_blank" rel="nofollow">@medium</a>
-                    <br >
+                    Nested Spintax available. <a href="https://www.spinrewriter.com/?ref=e337" target="_blank" rel="noopener noreferrer">Create spintaxes easily here.</a>
+                    <br />
                     Example: {Never|Never ever|Do not|Don't} {trust|rely on} an {online|on-line}
                     {comments|reviews|forums|discussions}
+                    <br />
+                    You can also write classic comments line by line.
                 </p>
             </th>
             <td>
@@ -55,8 +83,7 @@ endwhile;
 
         <span class="faketalk_title">Select Date Range</span>
         <p class="description">
-            Select date range that will try to create more authentic comments with older dates. In order to publish all
-            comments as a today, please pick the same date in both inputs.
+        The date range will try to create more authentic comments with older dates. To publish all comments as of today, please pick the same date in both inputs.
         </p>
         <?php
 echo '<input name="faketalk_date_from" type="text" id="date_from" class="datepicker" size="20" value="' . date("d-m-Y", strtotime("-1 year", time())) . '">';
@@ -82,8 +109,7 @@ echo '<input name="faketalk_date_to" type="text" id="date_to" class="datepicker"
         <input name="faketalk_custom_meta_value" id="faketalk_custom_meta_value" value="" type="text" >
 
         <span class="faketalk_title">Custom Rating System</span>
-        <p class="description">Are your comments using some kind of rating / review system ? Simply specify meta name of the rating system
-            and add min/max rating. We will try to add randomized rating to each generated comment.</p>
+        <p class="description">Are your comments using some kind of rating/review system? Simply specify the meta name of the rating system and add a min/max rating.<br />We will try to add a randomized rating to each generated comment.</p>
 
         <label>Custom Rating Name</label>
         <input name="faketalk_custom_rating_key" id="faketalk_custom_rating_key" value="" type="text" >
@@ -95,40 +121,7 @@ echo '<input name="faketalk_date_to" type="text" id="date_to" class="datepicker"
     </div>
 
     <div class="faketalk_tabbed_window" id="faketalk_schedule">
-        <p class="description">Currently this featured will be released in the premium version of this awesome plugin. Author may change the opinion and release it anyway. Stay tuned!</p>
+        <p class="description">Currently, this feature will be released in the premium version of this awesome plugin. The author may change the opinion and publish it anyway. Stay tuned!</p>
     </div>
 
-    <div class="faketalk_tabbed_window" id="faketalk_submit">
-        <p class="description">The material and information contained on this website is for general information purposes only. You should not rely upon the material or information on the website as a basis for making any business, legal or any other decisions.</p>
-        <p class="submit">
-            <input type="hidden" name="faketalk_hidden_submit" value="addnew">
-            <input type="submit" name="faketalk_final_submit" id="faketalk_final_submit" class="button button-primary" value="Publish Comments">
-        </p>
-    </div>
-</div>
-
-<div id="postbox-container-1" class="postbox-container">
-    <ul class="faketalk_tabbed_list">
-        <li class="postbox current" data-tab-target="faketalk_target">
-            <h3>#1 Target</h3>
-        </li>
-        <li class="postbox" data-tab-target="faketalk_comments">
-            <h3>#2 Comments</h3>
-        </li>
-        <li class="postbox" data-tab-target="faketalk_date">
-            <h3>#3 Date Range</h3>
-        </li>
-        <li class="postbox" data-tab-target="faketalk_settings">
-            <h3>#4 Settings</h3>
-        </li>
-        <li class="postbox" data-tab-target="faketalk_schedule">
-            <h3>#5 Schedule</h3>
-        </li>
-        <li class="postbox" data-tab-target="faketalk_submit">
-            <h3>#6 Submit</h3>
-        </li>
-        <li class="postbox faketalk-sidebar-prom">
-            <img src="<?php echo FAKETALK_URL . 'resources/images/ad.jpg'; ?>" alt="" >
-        </li>
-    </ul>
 </div>
