@@ -20,8 +20,8 @@ class menuContent {
      */
     function __construct(array $structure=array()) {
 
-		// Admin Init
-		$this->createAdminInit($structure);
+	// Admin Init
+	$this->createAdminInit($structure);
 
         // Create Menu
         $this->createMenu($structure);
