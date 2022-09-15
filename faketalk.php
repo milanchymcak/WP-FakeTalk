@@ -13,10 +13,6 @@
  * Update URI:        https://chymcakmilan.com/plugin
  */
 
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
 // Protect all files from direct accessing them by outsiders
 if (!defined('ABSPATH')) die('Boo! Do not access the file directly!'); 
 
