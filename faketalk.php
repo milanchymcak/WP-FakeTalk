@@ -4,7 +4,7 @@
  * Plugin URI:        https://chymcakmilan.com
  * Description:       Generate more comments for your blog posts with just one click!
  * Version:           0.1
- * Requires at least: 5.2
+ * Requires at least: 8.0
  * Requires PHP:      8.0
  * Author:            Milan Chymcak
  * Author URI:        https://chymcakmilan.com
