@@ -467,7 +467,7 @@ class submitData {
      * @param  int $status_code
      * @return string
      */
-    private function formMessage(int $status_code=5): string {
+    private function formMessage(int $status_code=0): string {
 
         // 1 - Problem with targeted blog posts
         if($status_code === 1) return 'We couldn\'t find any blog posts to comment on. Please try again!';
