@@ -4,9 +4,8 @@ namespace FakeTalk;
 // Do not access the file directly!
 defined('FAKETALK_LOGGED') or die('Boo! Do not access the file directly!'); 
 
-// Sidebar Dashboard (Admin) Menu
 /**
- * Create Menu Content 
+ * Create Menu Content (Sidebar Dashboard (Admin) Menu)
  * WP-Admin Sidebar
  * 
  */
@@ -31,7 +30,7 @@ class menuContent {
 	 * Enqueue the required styles 
 	 * Register the required scripts
 	 *
-	 * @param  mixed $structure
+	 * @param  array $structure
 	 * @return void
 	 */
 	private function createAdminInit(Array $structure=array()): void {
@@ -176,7 +175,7 @@ class menuContent {
 	/**
 	 * Template Content
 	 * !! We kinda need to use print inside the method below as that's how the anonymous
-	 * function insisde add_submenu_page wordpress hook works
+	 * function inside add_submenu_page wordpress hook works
 	 * It's much better than create fnc for each submenu page and then calling them one by one
 	 *
 	 * @param string $menuPageTitle
