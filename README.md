@@ -16,3 +16,6 @@ Do you feel like the discussion at your posts is going nowhere? You can create, 
 2. Click Upload Plugin
 3. Choose File & Install Now
 4. Done. Don't forget to visit the FakeTalk settings page to get you going.
+
+## More
+Please, follow me on [chymcakmilan.com](https://chymcakmilan.com)
